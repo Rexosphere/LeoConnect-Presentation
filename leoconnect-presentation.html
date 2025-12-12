@@ -56,7 +56,6 @@
             align-items: center;
             padding: 4rem;
             position: relative;
-            page-break-after: always;
         }
 
         @media print {
@@ -164,6 +163,21 @@
             font-weight: 600;
             text-align: center;
             padding: 2rem;
+        }
+
+        .video-placeholder {
+            background: #1a1a1a;
+            border: 3px solid var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 2rem;
+            flex-direction: column;
         }
 
         .code-block {
@@ -285,10 +299,8 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState } = React;
-
-        function Slide({ children, className = "" }) {
-            return <div className={`slide ${className}`}>{children}</div>;
+        function Slide({ children }) {
+            return <div className="slide">{children}</div>;
         }
 
         function Presentation() {
@@ -303,30 +315,140 @@
                         </div>
                         <div className="team-info">
                             <strong>Team Rexosphere</strong><br />
-                            University of Sri Jayewardenepura<br />
-                            AlgoArena 2025
+                            University of Moratuwa<br />
+                            <span style={{ fontSize: '1rem', opacity: 0.8 }}>AlgoArena 2025 | Organized by University of Sri Jayewardenepura</span>
                         </div>
                     </Slide>
 
                     {/* SLIDE 2: Team */}
                     <Slide>
                         <h2>Team Rexosphere</h2>
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <div className="stat-label">Lead Developer</div>
-                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>[Member 1]</div>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(4, 1fr)',
+                            gap: '2.5rem',
+                            marginTop: '3rem',
+                            maxWidth: '1200px'
+                        }}>
+                            {/* Ifaz Ikram */}
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{
+                                    width: '180px',
+                                    height: '180px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, #8C4E29 0%, #FFDBCA 100%)',
+                                    margin: '0 auto',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 12px 40px rgba(140, 78, 41, 0.3)',
+                                    border: '4px solid white'
+                                }}>
+                                    <img
+                                        src="ifaz.avif"
+                                        alt="Ifaz Ikram"
+                                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                                    />
+                                </div>
+                                <div style={{
+                                    marginTop: '1.5rem',
+                                    fontSize: '1.4rem',
+                                    fontWeight: '700',
+                                    color: 'var(--primary)'
+                                }}>Ifaz Ikram</div>
                             </div>
-                            <div className="stat-card">
-                                <div className="stat-label">Backend Engineer</div>
-                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>[Member 2]</div>
+
+                            {/* Kalana Liyanage */}
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{
+                                    width: '180px',
+                                    height: '180px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, #636032 0%, #E8E5B5 100%)',
+                                    margin: '0 auto',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 12px 40px rgba(99, 96, 50, 0.3)',
+                                    border: '4px solid white'
+                                }}>
+                                    <img
+                                        src="kalana.avif"
+                                        alt="Kalana Liyanage"
+                                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                                    />
+                                </div>
+                                <div style={{
+                                    marginTop: '1.5rem',
+                                    fontSize: '1.4rem',
+                                    fontWeight: '700',
+                                    color: 'var(--primary)'
+                                }}>Kalana Liyanage</div>
                             </div>
-                            <div className="stat-card">
-                                <div className="stat-label">UI/UX Designer</div>
-                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>[Member 3]</div>
+
+                            {/* Sangeeth Kariyapperuma */}
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{
+                                    width: '180px',
+                                    height: '180px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, #765848 0%, #D4C4B5 100%)',
+                                    margin: '0 auto',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 12px 40px rgba(118, 88, 72, 0.3)',
+                                    border: '4px solid white'
+                                }}>
+                                    <img
+                                        src="sangeeth.avif"
+                                        alt="Sangeeth Kariyapperuma"
+                                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                                    />
+                                </div>
+                                <div style={{
+                                    marginTop: '1.5rem',
+                                    fontSize: '1.4rem',
+                                    fontWeight: '700',
+                                    color: 'var(--primary)'
+                                }}>Sangeeth Kariyapperuma</div>
+                            </div>
+
+                            {/* Suhas Dissanayake */}
+                            <div style={{ textAlign: 'center' }}>
+                                <div style={{
+                                    width: '180px',
+                                    height: '180px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, #6F3714 0%, #FFB68E 100%)',
+                                    margin: '0 auto',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 12px 40px rgba(111, 55, 20, 0.3)',
+                                    border: '4px solid white'
+                                }}>
+                                    <img
+                                        src="suhas.avif"
+                                        alt="Suhas Dissanayake"
+                                        style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                                    />
+                                </div>
+                                <div style={{
+                                    marginTop: '1.5rem',
+                                    fontSize: '1.4rem',
+                                    fontWeight: '700',
+                                    color: 'var(--primary)'
+                                }}>Suhas Dissanayake</div>
                             </div>
                         </div>
-                        <div className="placeholder" style={{ marginTop: '2rem', minHeight: '250px' }}>
-                            [INSERT TEAM PHOTO]
+                        <div style={{
+                            marginTop: '3rem',
+                            fontSize: '1.3rem',
+                            color: 'var(--secondary)',
+                            fontStyle: 'italic'
+                        }}>
+                            University of Moratuwa
                         </div>
                     </Slide>
 
@@ -337,21 +459,19 @@
                             <div className="content-box">
                                 <h3>Leo MD 306 Today</h3>
                                 <ul className="feature-list">
-                                    <li><strong>12 Leo Districts</strong> (D1-D12)</li>
-                                    <li><strong>200+ Leo Clubs</strong> across Sri Lanka & Maldives</li>
+                                    <li><strong>12 Districts</strong> (D1-D12)</li>
+                                    <li><strong>200+ Clubs</strong> across Sri Lanka & Maldives</li>
                                     <li><strong>4000+ members</strong> serving communities</li>
-                                    <li>Part of <strong>Lions Clubs International</strong></li>
                                 </ul>
                                 <div className="highlight-box" style={{ marginTop: '2rem' }}>
-                                    "But there's a problem..."
+                                    "But there's no unified platform..."
                                 </div>
                             </div>
                             <div className="content-box">
                                 <h3>The Disconnect</h3>
                                 <ul className="feature-list">
-                                    <li><span className="xmark">✗</span> No unified digital platform</li>
-                                    <li><span className="xmark">✗</span> Fragmented WhatsApp/Facebook groups</li>
-                                    <li><span className="xmark">✗</span> Hard to discover clubs in other districts</li>
+                                    <li><span className="xmark">✗</span> Fragmented WhatsApp/Facebook</li>
+                                    <li><span className="xmark">✗</span> Can't discover other districts</li>
                                     <li><span className="xmark">✗</span> No shared event coordination</li>
                                     <li><span className="xmark">✗</span> Limited inter-club collaboration</li>
                                 </ul>
@@ -359,358 +479,189 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 4: The Solution */}
+                    {/* SLIDE 4: Solution Overview */}
                     <Slide>
                         <h2>Introducing LeoConnect</h2>
-                        <div className="content-grid">
-                            <div>
-                                <h3>A Dedicated Platform for Leo MD 306</h3>
-                                <ul className="feature-list">
-                                    <li><span className="emoji">📱</span> Unified feed for all 12 districts</li>
-                                    <li><span className="emoji">🔍</span> District-based club discovery</li>
-                                    <li><span className="emoji">📅</span> Events with RSVP system</li>
-                                    <li><span className="emoji">💬</span> Direct messaging</li>
-                                    <li><span className="emoji">🤖</span> AI-powered Leo assistant</li>
-                                    <li><span className="emoji">✓</span> Verified official accounts</li>
-                                </ul>
-                                <div className="highlight-box" style={{ fontSize: '1.2rem' }}>
-                                    "One app to connect all Leo members from Colombo to Jaffna, even Malé!"
-                                </div>
+                        <div className="stats-grid-4">
+                            <div className="stat-card">
+                                <div className="stat-number">📱</div>
+                                <div className="stat-label"><strong>Social Feed</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>Posts, likes, comments</p>
                             </div>
-                            <div className="placeholder">
-                                [INSERT APP HOME SCREEN MOCKUP]
+                            <div className="stat-card">
+                                <div className="stat-number">🔍</div>
+                                <div className="stat-label"><strong>Club Discovery</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>12 districts, 90+ clubs</p>
                             </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 5: Social Feed */}
-                    <Slide>
-                        <h2>📱 Social Feed</h2>
-                        <div className="content-grid">
-                            <div className="content-box">
-                                <h3>Share Your Leo Journey</h3>
-                                <ul className="feature-list">
-                                    <li>Create posts with text and images</li>
-                                    <li>Like and comment on posts</li>
-                                    <li>Follow clubs to see their updates</li>
-                                    <li>Personalized feed from followed users & clubs</li>
-                                    <li>Pin important club announcements</li>
-                                </ul>
-                                <h3 style={{ marginTop: '2rem' }}>Visual Highlights</h3>
-                                <div className="badge">Material3 Design</div>
-                                <div className="badge">Skeleton Loading</div>
-                                <div className="badge">Real-time Updates</div>
-                                <div className="badge">Pull-to-Refresh</div>
+                            <div className="stat-card">
+                                <div className="stat-number">📅</div>
+                                <div className="stat-label"><strong>Events + RSVP</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>Create & join events</p>
                             </div>
-                            <div className="placeholder">
-                                [INSERT SOCIAL FEED SCREENSHOT]
+                            <div className="stat-card">
+                                <div className="stat-number">🤖</div>
+                                <div className="stat-label"><strong>Leo AI</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>AI-powered assistant</p>
                             </div>
                         </div>
-                    </Slide>
-
-                    {/* SLIDE 6: Club Discovery */}
-                    <Slide>
-                        <h2>🔍 Club Discovery</h2>
-                        <div className="content-grid">
-                            <div className="content-box">
-                                <h3>Find Your Community</h3>
-                                <ul className="feature-list">
-                                    <li>Browse all <strong>12 Districts</strong> (D1-D12)</li>
-                                    <li>View <strong>90+ clubs</strong> with real data</li>
-                                    <li>See member counts & descriptions</li>
-                                    <li>View club's recent posts</li>
-                                    <li>One-tap follow</li>
-                                </ul>
-                                <h3 style={{ marginTop: '1.5rem' }}>Real Data Examples</h3>
-                                <div className="badge">Leo Club of Wattala (First in SL!)</div>
-                                <div className="badge">Leo Club of IIT</div>
-                                <div className="badge">Leo Club of Malé 🇲🇻</div>
-                            </div>
-                            <div className="placeholder">
-                                [INSERT CLUB DISCOVERY SCREEN]
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 7: Events */}
-                    <Slide>
-                        <h2>📅 Events & RSVP</h2>
-                        <div className="content-grid">
-                            <div className="content-box">
-                                <h3>Create Events</h3>
-                                <ul className="feature-list">
-                                    <li>Event name & description</li>
-                                    <li>Date, time, and location</li>
-                                    <li>Cover image upload (R2 storage)</li>
-                                    <li>Club association</li>
-                                </ul>
-                                <h3 style={{ marginTop: '1.5rem' }}>Join Events</h3>
-                                <ul className="feature-list">
-                                    <li>Browse upcoming events</li>
-                                    <li>One-tap RSVP</li>
-                                    <li>View participant list</li>
-                                    <li>RSVP count tracking</li>
-                                </ul>
-                            </div>
-                            <div className="content-box">
-                                <h3>Sample Events (Seeded)</h3>
-                                <ul className="feature-list">
-                                    <li>🩸 Blood Donation Campaign 2025</li>
-                                    <li>🎓 Leadership Workshop - UoK</li>
-                                    <li>🏆 Southern Province Leo Rally</li>
-                                    <li>🏔️ Hill Country Service Project</li>
-                                    <li>🌟 Northern Province Youth Conference</li>
-                                </ul>
-                                <div className="highlight-box" style={{ fontSize: '1.1rem', marginTop: '2rem' }}>
-                                    Full CRUD + RSVP API implemented!
-                                </div>
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 8: Leo AI */}
-                    <Slide>
-                        <h2>🤖 Leo AI Assistant</h2>
-                        <div className="content-grid">
-                            <div className="content-box">
-                                <h3>Your Personal Leo Guide</h3>
-                                <ul className="feature-list">
-                                    <li><span className="emoji">🎓</span> Learn about Leo Club membership</li>
-                                    <li><span className="emoji">📋</span> Understand service project types</li>
-                                    <li><span className="emoji">🌏</span> Get District 306 information</li>
-                                    <li><span className="emoji">❓</span> Answer common questions</li>
-                                </ul>
-                                <h3 style={{ marginTop: '1.5rem' }}>Features</h3>
-                                <div className="badge">Natural Conversation</div>
-                                <div className="badge">Typing Indicators</div>
-                                <div className="badge">Message History</div>
-                                <div className="badge">Suggested Topics</div>
-                            </div>
-                            <div className="placeholder">
-                                [INSERT LEO AI CHAT INTERFACE]
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 9: Verified Accounts & Security */}
-                    <Slide>
-                        <h2>✓ Verified Accounts & Security</h2>
-                        <div className="content-grid">
-                            <div className="content-box">
-                                <h3>Verified Officials</h3>
-                                <ul className="feature-list">
-                                    <li><strong>30+ verified users</strong> seeded</li>
-                                    <li>MD President, VP, Secretary, Treasurer</li>
-                                    <li>All 12 District Presidents</li>
-                                    <li>District Secretaries</li>
-                                    <li>Blue check badge on profiles</li>
-                                </ul>
-                                <h3 style={{ marginTop: '1.5rem' }}>Only Verified Can Post</h3>
-                                <div className="highlight-box" style={{ fontSize: '1.1rem' }}>
-                                    Non-verified users see "Verify Leo ID" dialog
-                                </div>
-                            </div>
-                            <div className="content-box">
-                                <h3>Security Features</h3>
-                                <ul className="feature-list">
-                                    <li><span className="checkmark">✓</span> Firebase JWT Authentication</li>
-                                    <li><span className="checkmark">✓</span> Google OAuth (Android + Desktop)</li>
-                                    <li><span className="checkmark">✓</span> PKCE flow for Desktop</li>
-                                    <li><span className="checkmark">✓</span> Input validation on all endpoints</li>
-                                    <li><span className="checkmark">✓</span> HTTPS everywhere</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 10: Messaging & Notifications */}
-                    <Slide>
-                        <h2>💬 Connection & Engagement</h2>
-                        <div className="stats-grid">
+                        <div className="stats-grid-4" style={{ marginTop: '1rem' }}>
                             <div className="stat-card">
                                 <div className="stat-number">💬</div>
-                                <div className="stat-label"><strong>Direct Messaging</strong></div>
-                                <p style={{ marginTop: '1rem' }}>Private 1-on-1 conversations with real-time delivery</p>
+                                <div className="stat-label"><strong>Messaging</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>Real-time DMs</p>
                             </div>
                             <div className="stat-card">
                                 <div className="stat-number">🔔</div>
-                                <div className="stat-label"><strong>Push Notifications</strong></div>
-                                <p style={{ marginTop: '1rem' }}>Likes, follows, comments, messages, event reminders</p>
+                                <div className="stat-label"><strong>Notifications</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>Push alerts</p>
                             </div>
                             <div className="stat-card">
-                                <div className="stat-number">👥</div>
-                                <div className="stat-label"><strong>Following System</strong></div>
-                                <p style={{ marginTop: '1rem' }}>Follow users AND clubs, mutual follows tracked</p>
+                                <div className="stat-number">✓</div>
+                                <div className="stat-label"><strong>Verified Accounts</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>30+ officials</p>
+                            </div>
+                            <div className="stat-card">
+                                <div className="stat-number">🖥️</div>
+                                <div className="stat-label"><strong>Cross-Platform</strong></div>
+                                <p style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>Mobile + Desktop</p>
                             </div>
                         </div>
-                        <div className="placeholder" style={{ marginTop: '2rem' }}>
-                            [INSERT MESSAGING & NOTIFICATION SCREENSHOTS]
+                        <div className="highlight-box" style={{ marginTop: '2rem', fontSize: '1.3rem' }}>
+                            "One app to connect Colombo to Jaffna, even Malé!"
                         </div>
                     </Slide>
 
-                    {/* SLIDE 11: Technical Architecture */}
+                    {/* SLIDE 5: VIDEO DEMO */}
+                    <Slide>
+                        <h2>🎬 Live Demo</h2>
+                        <div className="video-placeholder" style={{ width: '100%', maxWidth: '1200px' }}>
+                            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>▶️</div>
+                            <div style={{ fontSize: '1.5rem' }}>VIDEO DEMO HERE</div>
+                            <div style={{ fontSize: '1rem', marginTop: '1rem', opacity: 0.7 }}>
+                                Cross-Platform • Feed • Events • Leo AI • Discovery • Messaging
+                            </div>
+                            <div style={{ marginTop: '2rem', fontSize: '0.9rem', opacity: 0.5 }}>
+                                [Insert 5-7 minute demo video]
+                            </div>
+                        </div>
+                    </Slide>
+
+                    {/* SLIDE 6: Technical Architecture */}
                     <Slide>
                         <h2>🏗️ Technical Architecture</h2>
-                        <div className="content-box full-width">
-                            <div className="code-block">
-                                {`┌─────────────────────────────────────────────────────┐
-│                    FRONTEND                          │
-│         Kotlin Multiplatform + Jetpack Compose       │
-│                                                      │
-│    ┌──────────┐  ┌──────────┐  ┌──────────┐        │
-│    │ Android  │  │   iOS    │  │ Desktop  │        │
-│    └──────────┘  └──────────┘  └──────────┘        │
-└─────────────────────────────────────────────────────┘
-                         │
-                         ▼
-┌─────────────────────────────────────────────────────┐
-│                    BACKEND                           │
-│              Cloudflare Workers (Edge)               │
-│                                                      │
-│    ┌──────────┐  ┌──────────┐  ┌──────────┐        │
-│    │ D1 (SQL) │  │ R2 (CDN) │  │ Firebase │        │
-│    │ Database │  │ Storage  │  │   Auth   │        │
-│    └──────────┘  └──────────┘  └──────────┘        │
-└─────────────────────────────────────────────────────┘`}
+                        <div style={{
+                            background: '#1a1a1a',
+                            padding: '3rem',
+                            borderRadius: '16px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <pre style={{
+                                color: '#0f0',
+                                fontFamily: "monospace",
+                                fontSize: '1rem',
+                                lineHeight: '1.5',
+                                margin: 0,
+                                whiteSpace: 'pre'
+                            }}>{`
+  ╔═══════════════════════════════════════════════════════╗
+  ║                       FRONTEND                        ║
+  ║         Kotlin Multiplatform + Jetpack Compose        ║
+  ║                                                       ║
+  ║     ┌─────────┐    ┌─────────┐    ┌─────────┐         ║
+  ║     │ Android │    │   iOS   │    │ Desktop │         ║
+  ║     └─────────┘    └─────────┘    └─────────┘         ║
+  ╚═══════════════════════════════════════════════════════╝
+                            │
+                            ▼
+  ╔═══════════════════════════════════════════════════════╗
+  ║                       BACKEND                         ║
+  ║              Cloudflare Workers (Edge)                ║
+  ║                                                       ║
+  ║     ┌─────────┐    ┌─────────┐    ┌─────────┐         ║
+  ║     │D1 (SQL) │    │R2 (CDN) │    │Firebase │         ║
+  ║     │Database │    │ Storage │    │  Auth   │         ║
+  ║     └─────────┘    └─────────┘    └─────────┘         ║
+  ╚═══════════════════════════════════════════════════════╝
+`}</pre>
+                        </div>
+                    </Slide>
+
+                    {/* SLIDE 7: Why KMP + Edge */}
+                    <Slide>
+                        <h2>🔧 Technical Innovation</h2>
+                        <div className="content-grid">
+                            <div className="content-box">
+                                <h3>Kotlin Multiplatform</h3>
+                                <table className="table">
+                                    <tbody>
+                                        <tr><td>Codebases</td><td><strong>1 shared</strong> (not 3)</td></tr>
+                                        <tr><td>Platforms</td><td><strong>Android + iOS + Desktop</strong></td></tr>
+                                        <tr><td>Bug fixes</td><td><strong>Fix once</strong>, fixed everywhere</td></tr>
+                                    </tbody>
+                                </table>
+                                <div style={{ marginTop: '1rem' }}>
+                                    <div className="badge badge-green">Competitor: Mobile Only</div>
+                                    <div className="badge badge-blue">Us: + Desktop!</div>
+                                </div>
+                            </div>
+                            <div className="content-box">
+                                <h3>Cloudflare Edge</h3>
+                                <table className="table">
+                                    <tbody>
+                                        <tr><td>API Latency</td><td><strong>&lt;50ms</strong> (not 200ms)</td></tr>
+                                        <tr><td>CDN</td><td><strong>300+ cities</strong> worldwide</td></tr>
+                                        <tr><td>Scaling</td><td><strong>Automatic</strong> (serverless)</td></tr>
+                                    </tbody>
+                                </table>
+                                <div style={{ marginTop: '1rem' }}>
+                                    <div className="badge badge-green">Zero DevOps</div>
+                                    <div className="badge badge-blue">Pay per use</div>
+                                </div>
                             </div>
                         </div>
                     </Slide>
 
-                    {/* SLIDE 12: Why KMP */}
+                    {/* SLIDE 8: Desktop PKCE */}
                     <Slide>
-                        <h2>🔧 Kotlin Multiplatform Advantage</h2>
-                        <table className="table full-width">
-                            <thead>
-                                <tr>
-                                    <th>Aspect</th>
-                                    <th>Traditional Approach</th>
-                                    <th>Our Approach (KMP)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Codebases</strong></td>
-                                    <td>3 separate codebases</td>
-                                    <td><strong>1 shared codebase</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Development Time</strong></td>
-                                    <td>3x development time</td>
-                                    <td><strong>Build once, deploy everywhere</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Features</strong></td>
-                                    <td>Inconsistent features</td>
-                                    <td><strong>Same features on all platforms</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Bug Fixes</strong></td>
-                                    <td>Fix 3 times</td>
-                                    <td><strong>Fix once, fixed everywhere</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div className="stats-grid" style={{ marginTop: '2rem' }}>
-                            <div className="stat-card">
-                                <div className="checkmark">✓</div>
-                                <div className="stat-label">Android Native</div>
-                            </div>
-                            <div className="stat-card">
-                                <div className="checkmark">✓</div>
-                                <div className="stat-label">iOS Native</div>
-                            </div>
-                            <div className="stat-card">
-                                <div className="checkmark">✓</div>
-                                <div className="stat-label">Desktop (Win/Mac/Linux)</div>
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 13: Edge Computing */}
-                    <Slide>
-                        <h2>⚡ Cloudflare Edge Deployment</h2>
-                        <div className="content-box full-width">
-                            <h3>Why Edge Matters</h3>
-                            <div className="code-block">
-                                {`Traditional Server:
-User in Sri Lanka → Server in US → 200-500ms latency
-
-Our Edge Approach:
-User in Sri Lanka → Cloudflare Edge (nearby) → <50ms latency`}
-                            </div>
-                            <table className="table" style={{ marginTop: '2rem' }}>
-                                <thead>
-                                    <tr>
-                                        <th>Metric</th>
-                                        <th>Traditional</th>
-                                        <th>LeoConnect</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>API Latency</td>
-                                        <td>200-500ms</td>
-                                        <td><strong>&lt;50ms</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Image Loading (R2 CDN)</td>
-                                        <td>1-3s</td>
-                                        <td><strong>&lt;500ms</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Global Availability</td>
-                                        <td>Limited</td>
-                                        <td><strong>300+ Cities</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Auto-scaling</td>
-                                        <td>Manual</td>
-                                        <td><strong>Automatic</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 14: Desktop PKCE Innovation */}
-                    <Slide>
-                        <h2>🖥️ Desktop Support (Exclusive!)</h2>
+                        <h2>🖥️ Desktop OAuth (Exclusive!)</h2>
                         <div className="content-grid">
                             <div className="content-box">
                                 <h3>The Challenge</h3>
                                 <div className="highlight-box" style={{ fontSize: '1.1rem' }}>
-                                    "How do you do Google OAuth on a desktop app without a browser callback URL?"
+                                    "How do you do Google OAuth on desktop without browser callback?"
                                 </div>
                                 <h3 style={{ marginTop: '1.5rem' }}>Our PKCE Solution</h3>
                                 <ol className="feature-list">
-                                    <li>App generates secure code verifier</li>
-                                    <li>Opens browser for Google login</li>
-                                    <li>Starts local HTTP server on localhost</li>
-                                    <li>Receives callback & exchanges code</li>
-                                    <li>Shows beautiful success page</li>
+                                    <li>Generate secure code verifier</li>
+                                    <li>Open browser for Google login</li>
+                                    <li>Start localhost HTTP server</li>
+                                    <li>Receive callback & exchange</li>
+                                    <li>Show success page in browser</li>
                                 </ol>
                             </div>
                             <div className="content-box">
                                 <h3>Why This Matters</h3>
                                 <ul className="feature-list">
-                                    <li><span className="checkmark">✓</span> <strong>Secure</strong> - PKCE prevents token interception</li>
-                                    <li><span className="checkmark">✓</span> <strong>Seamless</strong> - User doesn't notice complexity</li>
-                                    <li><span className="checkmark">✓</span> <strong>Unique</strong> - Competitor doesn't have desktop!</li>
+                                    <li><span className="checkmark">✓</span> <strong>Secure</strong> - PKCE prevents interception</li>
+                                    <li><span className="checkmark">✓</span> <strong>Seamless</strong> - User sees no complexity</li>
+                                    <li><span className="checkmark">✓</span> <strong>Unique</strong> - Competitor has NO desktop!</li>
                                 </ul>
-                                <div className="placeholder" style={{ marginTop: '2rem', minHeight: '200px' }}>
-                                    [INSERT DESKTOP APP SCREENSHOT]
+                                <div className="placeholder" style={{ marginTop: '1.5rem', minHeight: '150px' }}>
+                                    [Desktop App Screenshot]
                                 </div>
                             </div>
                         </div>
                     </Slide>
 
-                    {/* SLIDE 15: Database & Backend Stats */}
+                    {/* SLIDE 9: Real Data & Backend */}
                     <Slide>
                         <h2>📊 Real Data, Real Impact</h2>
                         <div className="stats-grid-4">
                             <div className="stat-card">
                                 <div className="stat-number">12</div>
-                                <div className="stat-label">Districts (D1-D12)</div>
+                                <div className="stat-label">Districts</div>
                             </div>
                             <div className="stat-card">
                                 <div className="stat-number">90+</div>
@@ -721,192 +672,70 @@ User in Sri Lanka → Cloudflare Edge (nearby) → <50ms latency`}
                                 <div className="stat-label">Verified Officials</div>
                             </div>
                             <div className="stat-card">
-                                <div className="stat-number">11</div>
-                                <div className="stat-label">DB Migrations</div>
+                                <div className="stat-number">3000+</div>
+                                <div className="stat-label">Lines Backend</div>
                             </div>
                         </div>
                         <div className="content-box" style={{ marginTop: '2rem', maxWidth: '1400px' }}>
-                            <h3>Backend API Coverage</h3>
-                            <div className="badge badge-green">Auth (Google/Firebase)</div>
-                            <div className="badge badge-green">Users CRUD</div>
-                            <div className="badge badge-green">Posts CRUD + Likes</div>
-                            <div className="badge badge-green">Comments + Likes</div>
+                            <h3>Complete API Coverage</h3>
+                            <div className="badge badge-green">Auth</div>
+                            <div className="badge badge-green">Users</div>
+                            <div className="badge badge-green">Posts + Likes</div>
+                            <div className="badge badge-green">Comments</div>
                             <div className="badge badge-green">Events + RSVP</div>
-                            <div className="badge badge-green">Clubs + Follow</div>
-                            <div className="badge badge-green">User Follow</div>
+                            <div className="badge badge-green">Clubs</div>
+                            <div className="badge badge-green">Follow System</div>
                             <div className="badge badge-green">Messages</div>
                             <div className="badge badge-green">Notifications</div>
                             <div className="badge badge-green">Image Upload (R2)</div>
-                            <div className="badge badge-blue">3000+ Lines TypeScript</div>
+                            <div className="badge badge-blue">11 Migrations</div>
                         </div>
                     </Slide>
 
-                    {/* SLIDE 16: Live Demo */}
+                    {/* SLIDE 10: Competitive Comparison */}
                     <Slide>
-                        <h2>🎬 Live Demo</h2>
-                        <div className="full-width">
-                            <h3 style={{ textAlign: 'center', marginBottom: '2rem' }}>What You'll See:</h3>
-                            <div className="stats-grid">
-                                <div className="stat-card">
-                                    <div className="stat-number">1</div>
-                                    <div className="stat-label">Cross-Platform</div>
-                                    <p style={{ marginTop: '0.5rem' }}>Mobile & Desktop</p>
-                                </div>
-                                <div className="stat-card">
-                                    <div className="stat-number">2</div>
-                                    <div className="stat-label">Social Feed</div>
-                                    <p style={{ marginTop: '0.5rem' }}>Posts, Likes, Comments</p>
-                                </div>
-                                <div className="stat-card">
-                                    <div className="stat-number">3</div>
-                                    <div className="stat-label">Events</div>
-                                    <p style={{ marginTop: '0.5rem' }}>Browse and RSVP</p>
-                                </div>
-                                <div className="stat-card">
-                                    <div className="stat-number">4</div>
-                                    <div className="stat-label">Leo AI</div>
-                                    <p style={{ marginTop: '0.5rem' }}>Live interaction</p>
-                                </div>
-                                <div className="stat-card">
-                                    <div className="stat-number">5</div>
-                                    <div className="stat-label">Discovery</div>
-                                    <p style={{ marginTop: '0.5rem' }}>12 Districts, 90+ clubs</p>
-                                </div>
-                                <div className="stat-card">
-                                    <div className="stat-number">6</div>
-                                    <div className="stat-label">Messaging</div>
-                                    <p style={{ marginTop: '0.5rem' }}>Real-time chat</p>
-                                </div>
-                            </div>
-                            <div className="placeholder" style={{ marginTop: '2rem' }}>
-                                [INSERT APP DEMO SCREENSHOTS OR VIDEO]
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 17: Scalability */}
-                    <Slide>
-                        <h2>📈 Built to Scale</h2>
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <div className="stat-number">∞</div>
-                                <div className="stat-label"><strong>D1 Database</strong></div>
-                                <p style={{ marginTop: '1rem' }}>Millions of records</p>
-                            </div>
-                            <div className="stat-card">
-                                <div className="stat-number">∞</div>
-                                <div className="stat-label"><strong>R2 Storage</strong></div>
-                                <p style={{ marginTop: '1rem' }}>Unlimited media</p>
-                            </div>
-                            <div className="stat-card">
-                                <div className="stat-number">100K+</div>
-                                <div className="stat-label"><strong>Edge Workers</strong></div>
-                                <p style={{ marginTop: '1rem' }}>Requests per second</p>
-                            </div>
-                        </div>
-                        <div className="content-box" style={{ marginTop: '2rem', maxWidth: '1400px' }}>
-                            <h3>Cost Efficiency</h3>
-                            <ul className="feature-list">
-                                <li><strong>Serverless</strong> = Pay only for what you use</li>
-                                <li><strong>No server maintenance</strong> = Zero DevOps overhead</li>
-                                <li><strong>Global CDN</strong> = Fast everywhere, no extra cost</li>
-                                <li><strong>Auto-scaling</strong> = Handles traffic spikes automatically</li>
-                            </ul>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 18: Why We Win */}
-                    <Slide>
-                        <h2>🏆 Why LeoConnect Wins</h2>
+                        <h2>🏆 Why We Win</h2>
                         <table className="table full-width">
                             <thead>
                                 <tr>
                                     <th>Feature</th>
-                                    <th>Facebook/WhatsApp</th>
-                                    <th>Competitors</th>
+                                    <th>WhatsApp/FB</th>
                                     <th>LeoConnect</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>Focus</strong></td>
-                                    <td>General Purpose</td>
-                                    <td>Generic</td>
-                                    <td><strong>Leo-Specific (MD 306)</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Discovery</strong></td>
-                                    <td>Difficult</td>
-                                    <td>Limited</td>
-                                    <td><strong>12 Districts, 90+ Clubs</strong></td>
+                                    <td>General</td>
+                                    <td><strong>Leo MD 306 Specific</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>Platform</strong></td>
                                     <td>Web/Mobile</td>
-                                    <td>Mobile Only</td>
                                     <td><strong>Mobile + Desktop</strong></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Technology</strong></td>
+                                    <td><strong>Backend</strong></td>
                                     <td>Legacy</td>
-                                    <td>Flutter/Node</td>
-                                    <td><strong>KMP + Cloudflare Edge</strong></td>
+                                    <td><strong>Cloudflare Edge</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>AI Assistant</strong></td>
-                                    <td><span className="xmark">✗</span></td>
-                                    <td><span className="xmark">✗</span></td>
-                                    <td><span className="checkmark">✓</span> Leo AI</td>
+                                    <td><span style={{ color: '#BA1A1A', fontSize: '1.5rem' }}>✕</span></td>
+                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span></td>
                                 </tr>
                                 <tr>
                                     <td><strong>Verified Accounts</strong></td>
-                                    <td><span className="xmark">✗</span></td>
-                                    <td><span className="xmark">✗</span></td>
-                                    <td><span className="checkmark">✓</span> 30+ Officials</td>
+                                    <td><span style={{ color: '#BA1A1A', fontSize: '1.5rem' }}>✕</span></td>
+                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span> 30+</td>
                                 </tr>
                             </tbody>
                         </table>
                     </Slide>
 
-                    {/* SLIDE 19: Future Roadmap */}
+                    {/* SLIDE 11: Judging Criteria */}
                     <Slide>
-                        <h2>🚀 Future Roadmap</h2>
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <div className="stat-label"><strong>Phase 1: Now ✅</strong></div>
-                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left' }}>
-                                    <li>Social feed with likes/comments</li>
-                                    <li>Events with RSVP</li>
-                                    <li>Leo AI assistant</li>
-                                    <li>Cross-platform + Desktop</li>
-                                    <li>Verified accounts</li>
-                                </ul>
-                            </div>
-                            <div className="stat-card">
-                                <div className="stat-label"><strong>Phase 2: Quick Polish</strong></div>
-                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left' }}>
-                                    <li>Rate limiting</li>
-                                    <li>Double-tap like animation</li>
-                                    <li>Haptic feedback</li>
-                                    <li>Empty state illustrations</li>
-                                </ul>
-                            </div>
-                            <div className="stat-card">
-                                <div className="stat-label"><strong>Phase 3: Future</strong></div>
-                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left' }}>
-                                    <li>Service hours tracking</li>
-                                    <li>Achievement badges</li>
-                                    <li>Multi-image posts</li>
-                                    <li>Offline mode</li>
-                                    <li>iOS App Store</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 20: Summary */}
-                    <Slide>
-                        <h2>✅ Why LeoConnect Wins</h2>
+                        <h2>✅ Judging Criteria Match</h2>
                         <table className="table full-width">
                             <thead>
                                 <tr>
@@ -919,12 +748,12 @@ User in Sri Lanka → Cloudflare Edge (nearby) → <50ms latency`}
                                 <tr>
                                     <td><strong>Functionality</strong></td>
                                     <td>40%</td>
-                                    <td>Complete features + Events + AI + Verified Accounts</td>
+                                    <td>Complete: Feed + Events + AI + Verified + DMs</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Innovation</strong></td>
                                     <td>30%</td>
-                                    <td>KMP + Edge computing + PKCE Desktop OAuth</td>
+                                    <td>KMP + Edge + PKCE Desktop OAuth</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Performance</strong></td>
@@ -939,7 +768,7 @@ User in Sri Lanka → Cloudflare Edge (nearby) → <50ms latency`}
                                 <tr>
                                     <td><strong>Presentation</strong></td>
                                     <td>10%</td>
-                                    <td>Real data: 12 districts, 90+ clubs, 30+ officials</td>
+                                    <td>Real data: 12 districts, 90+ clubs</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -950,16 +779,51 @@ User in Sri Lanka → Cloudflare Edge (nearby) → <50ms latency`}
                             </div>
                             <div className="stat-card">
                                 <div className="stat-number">⚡</div>
-                                <div className="stat-label">Fastest Backend (Edge)</div>
+                                <div className="stat-label">Fastest Backend</div>
                             </div>
                             <div className="stat-card">
                                 <div className="stat-number">🤖</div>
-                                <div className="stat-label">AI-Powered Assistant</div>
+                                <div className="stat-label">AI Assistant</div>
                             </div>
                         </div>
                     </Slide>
 
-                    {/* SLIDE 21: Thank You */}
+                    {/* SLIDE 12: Future Roadmap */}
+                    <Slide>
+                        <h2>🚀 Roadmap</h2>
+                        <div className="stats-grid">
+                            <div className="stat-card">
+                                <div className="stat-label"><strong>✅ Now (Complete)</strong></div>
+                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left', fontSize: '1rem' }}>
+                                    <li>Social feed & engagement</li>
+                                    <li>Events + RSVP</li>
+                                    <li>Leo AI assistant</li>
+                                    <li>Desktop support</li>
+                                    <li>Verified accounts</li>
+                                </ul>
+                            </div>
+                            <div className="stat-card">
+                                <div className="stat-label"><strong>🟡 Quick Polish</strong></div>
+                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left', fontSize: '1rem' }}>
+                                    <li>Rate limiting</li>
+                                    <li>Double-tap like</li>
+                                    <li>Haptic feedback</li>
+                                    <li>Empty state illustrations</li>
+                                </ul>
+                            </div>
+                            <div className="stat-card">
+                                <div className="stat-label"><strong>🔮 Future</strong></div>
+                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left', fontSize: '1rem' }}>
+                                    <li>Service hours tracking</li>
+                                    <li>Achievement badges</li>
+                                    <li>Offline mode</li>
+                                    <li>iOS App Store</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </Slide>
+
+                    {/* SLIDE 13: Thank You */}
                     <Slide>
                         <h1>🙏 Thank You!</h1>
                         <div className="subtitle">Team Rexosphere</div>
@@ -980,9 +844,6 @@ User in Sri Lanka → Cloudflare Edge (nearby) → <50ms latency`}
                                 <div className="stat-label">Questions?</div>
                                 <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>We're ready!</div>
                             </div>
-                        </div>
-                        <div className="placeholder" style={{ marginTop: '2rem' }}>
-                            [INSERT TEAM PHOTO & QR CODE]
                         </div>
                     </Slide>
                 </>
