@@ -24,6 +24,10 @@
             --surface: #FFF8F6;
             --surface-container: #FCEAE3;
             --surface-variant: #F4DED4;
+            --gradient-1: linear-gradient(135deg, #8C4E29 0%, #B8704A 50%, #D4956C 100%);
+            --gradient-2: linear-gradient(135deg, #FFDBCA 0%, #FFE8DC 50%, #FFF5F0 100%);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(140, 78, 41, 0.2);
         }
 
         * {
@@ -46,6 +50,7 @@
             scroll-behavior: smooth;
         }
 
+        /* Animated gradient background for slides */
         .slide {
             height: 100vh;
             width: 100vw;
@@ -56,6 +61,33 @@
             align-items: center;
             padding: 4rem;
             position: relative;
+            background: linear-gradient(135deg, #FFF8F6 0%, #FFEEE6 25%, #FFE4D9 50%, #FFEEE6 75%, #FFF8F6 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(140, 78, 41, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(99, 96, 50, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         @media print {
@@ -69,6 +101,7 @@
                 page-break-after: always;
                 break-inside: avoid;
                 scroll-snap-align: none;
+                animation: none;
             }
 
             @page {
@@ -77,21 +110,25 @@
             }
         }
 
+        /* Typography */
         h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
             text-align: center;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         h2 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out;
         }
 
         h3 {
@@ -102,11 +139,24 @@
             margin-bottom: 1rem;
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .subtitle {
             font-size: 2rem;
             color: var(--tertiary);
             margin-bottom: 3rem;
             text-align: center;
+            font-weight: 500;
         }
 
         .team-info {
@@ -115,60 +165,65 @@
             text-align: center;
         }
 
+        /* Glassmorphism content boxes */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
             width: 100%;
             max-width: 1400px;
         }
 
         .content-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(140, 78, 41, 0.1);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(140, 78, 41, 0.12),
+                0 2px 8px rgba(140, 78, 41, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(140, 78, 41, 0.15),
+                0 4px 12px rgba(140, 78, 41, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
         }
 
         .feature-list {
             list-style: none;
             font-size: 1.2rem;
-            line-height: 1.8;
+            line-height: 2;
         }
 
         .feature-list li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            padding-left: 2.5rem;
             position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-list li:hover {
+            transform: translateX(5px);
         }
 
         .feature-list li:before {
-            content: "•";
+            content: "✦";
             color: var(--primary);
-            font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             position: absolute;
             left: 0;
         }
 
-        .placeholder {
-            background: var(--primary-container);
-            border: 3px dashed var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            color: var(--on-primary-container);
-            font-weight: 600;
-            text-align: center;
-            padding: 2rem;
-        }
-
+        /* Video placeholder */
         .video-placeholder {
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             border: 3px solid var(--primary);
-            border-radius: 16px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -176,65 +231,78 @@
             color: white;
             font-weight: 600;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(140, 78, 41, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        .code-block {
-            background: #1a1a1a;
-            color: #0f0;
-            padding: 2rem;
-            border-radius: 12px;
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            line-height: 1.6;
-            white-space: pre-wrap;
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(140, 78, 41, 0.1), transparent);
+            animation: rotate 10s linear infinite;
         }
 
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Premium Tables */
         .table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin: 1rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(140, 78, 41, 0.1);
         }
 
         .table th,
         .table td {
-            padding: 1rem;
+            padding: 1.2rem 1.5rem;
             text-align: left;
-            border-bottom: 2px solid var(--primary-container);
         }
 
         .table th {
-            background: var(--primary);
+            background: var(--gradient-1);
             color: var(--on-primary);
             font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
         }
 
-        .checkmark {
-            color: #05C167;
-            font-size: 2rem;
+        .table tr {
+            background: white;
+            transition: background 0.2s ease;
         }
 
-        .xmark {
-            color: #BA1A1A;
-            font-size: 2rem;
+        .table tr:nth-child(even) {
+            background: var(--surface-container);
         }
 
-        .highlight-box {
-            background: var(--primary);
-            color: var(--on-primary);
-            padding: 2rem 3rem;
-            border-radius: 16px;
-            font-size: 1.5rem;
-            font-style: italic;
-            text-align: center;
-            margin: 2rem 0;
+        .table tr:hover {
+            background: var(--primary-container);
         }
 
+        .table td {
+            border-bottom: 1px solid var(--surface-variant);
+        }
+
+        /* Stats cards with gradient borders */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
@@ -246,15 +314,27 @@
         }
 
         .stat-card {
-            background: white;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
             padding: 2rem;
-            border-radius: 12px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 4px 16px rgba(140, 78, 41, 0.1);
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), var(--gradient-1);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 8px 32px rgba(140, 78, 41, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 16px 48px rgba(140, 78, 41, 0.15);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--primary);
         }
@@ -262,7 +342,8 @@
         .stat-label {
             font-size: 1.1rem;
             color: var(--secondary);
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
+            font-weight: 500;
         }
 
         .full-width {
@@ -270,27 +351,179 @@
             max-width: 1400px;
         }
 
-        .emoji {
-            font-size: 1.5em;
-            margin-right: 0.5rem;
+        /* Badges with gradient */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-1);
+            color: var(--on-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 0.3rem;
+            box-shadow: 0 4px 12px rgba(140, 78, 41, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .badge {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--on-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 600;
-            margin: 0.25rem;
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(140, 78, 41, 0.3);
         }
 
         .badge-green {
-            background: #05C167;
+            background: linear-gradient(135deg, #05C167 0%, #00E676 100%);
         }
 
         .badge-blue {
-            background: #0066FF;
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: var(--gradient-1);
+            color: var(--on-primary);
+            padding: 2.5rem 3.5rem;
+            border-radius: 20px;
+            font-size: 1.6rem;
+            font-style: italic;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 12px 40px rgba(140, 78, 41, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 6rem;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        /* Team member cards */
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .team-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(140, 78, 41, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 180px;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(140, 78, 41, 0.2);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(140, 78, 41, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .team-name {
+            font-weight: 700;
+            color: var(--on-primary-container);
+            font-size: 1rem;
+        }
+
+        /* Architecture boxes */
+        .arch-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 3px solid var(--primary);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(140, 78, 41, 0.12);
+            transition: transform 0.3s ease;
+        }
+
+        .arch-box:hover {
+            transform: scale(1.02);
+        }
+
+        .arch-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--on-primary-container);
+            margin-bottom: 0.5rem;
+        }
+
+        .arch-subtitle {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Connector lines */
+        .connector {
+            width: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid,
+            .stats-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .slide {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .stats-grid,
+            .stats-grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .team-grid {
+                gap: 1rem;
+            }
+
+            .team-card {
+                width: 140px;
+            }
         }
     </style>
 </head>
@@ -549,42 +782,78 @@
                     {/* SLIDE 6: Technical Architecture */}
                     <Slide>
                         <h2>🏗️ Technical Architecture</h2>
-                        <div style={{
-                            background: '#1a1a1a',
-                            padding: '3rem',
-                            borderRadius: '16px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <pre style={{
-                                color: '#0f0',
-                                fontFamily: "monospace",
-                                fontSize: '1rem',
-                                lineHeight: '1.5',
-                                margin: 0,
-                                whiteSpace: 'pre'
-                            }}>{`
-  ╔═══════════════════════════════════════════════════════╗
-  ║                       FRONTEND                        ║
-  ║         Kotlin Multiplatform + Jetpack Compose        ║
-  ║                                                       ║
-  ║     ┌─────────┐    ┌─────────┐    ┌─────────┐         ║
-  ║     │ Android │    │   iOS   │    │ Desktop │         ║
-  ║     └─────────┘    └─────────┘    └─────────┘         ║
-  ╚═══════════════════════════════════════════════════════╝
-                            │
-                            ▼
-  ╔═══════════════════════════════════════════════════════╗
-  ║                       BACKEND                         ║
-  ║              Cloudflare Workers (Edge)                ║
-  ║                                                       ║
-  ║     ┌─────────┐    ┌─────────┐    ┌─────────┐         ║
-  ║     │D1 (SQL) │    │R2 (CDN) │    │Firebase │         ║
-  ║     │Database │    │ Storage │    │  Auth   │         ║
-  ║     └─────────┘    └─────────┘    └─────────┘         ║
-  ╚═══════════════════════════════════════════════════════╝
-`}</pre>
+                        <div style={{ width: '100%', maxWidth: '1000px' }}>
+                            {/* Client Apps Box */}
+                            <div className="arch-box" style={{ marginBottom: '1.5rem', border: '3px solid var(--primary)' }}>
+                                <div className="arch-title" style={{ fontSize: '1.4rem' }}>📱 CLIENT APPS</div>
+                                <div className="arch-subtitle">Kotlin Multiplatform + Jetpack Compose</div>
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+                                    <div className="badge" style={{ position: 'relative' }}>
+                                        Android <span style={{ fontSize: '0.7rem', marginLeft: '0.3rem', background: '#05C167', padding: '2px 6px', borderRadius: '10px' }}>~6MB</span>
+                                    </div>
+                                    <div className="badge">iOS</div>
+                                    <div className="badge">Desktop</div>
+                                    <div className="badge badge-blue">Web</div>
+                                </div>
+                            </div>
+
+                            {/* Split Connector - goes to both Admin and Backend */}
+                            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', height: '50px' }}>
+                                {/* Vertical down */}
+                                <div className="connector" style={{ height: '25px', position: 'absolute', top: 0 }}></div>
+                                {/* Horizontal bar */}
+                                <div style={{ width: '40%', height: '4px', background: 'var(--gradient-1)', position: 'absolute', top: '25px', borderRadius: '2px' }}></div>
+                                {/* Left leg */}
+                                <div className="connector" style={{ height: '25px', position: 'absolute', top: '25px', left: '30%' }}></div>
+                                {/* Right leg */}
+                                <div className="connector" style={{ height: '25px', position: 'absolute', top: '25px', right: '30%' }}></div>
+                            </div>
+
+                            {/* Middle Row - Admin + Backend with Leo AI */}
+                            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                                {/* Admin Dashboard */}
+                                <div className="arch-box" style={{
+                                    flex: '1',
+                                    minWidth: '280px',
+                                    maxWidth: '380px',
+                                    border: '3px solid var(--tertiary)'
+                                }}>
+                                    <div className="arch-title">🖥️ ADMIN DASHBOARD</div>
+                                    <div className="arch-subtitle">Vue.js + Vite</div>
+                                    <div style={{ fontSize: '0.95rem', lineHeight: '1.8', marginTop: '1rem' }}>
+                                        <div>✦ User Management</div>
+                                        <div>✦ Club Management</div>
+                                        <div>✦ Analytics Dashboard</div>
+                                    </div>
+                                </div>
+
+                                {/* Backend + Leo AI Column */}
+                                <div style={{ flex: '1', minWidth: '280px', maxWidth: '380px' }}>
+                                    {/* Backend */}
+                                    <div className="arch-box" style={{ border: '3px solid var(--secondary)' }}>
+                                        <div className="arch-title">⚡ BACKEND</div>
+                                        <div className="arch-subtitle">Cloudflare Workers (Edge)</div>
+                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '0.75rem' }}>
+                                            <div className="badge" style={{ background: 'var(--secondary)' }}>D1 SQL</div>
+                                            <div className="badge" style={{ background: 'var(--secondary)' }}>R2 CDN</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Connector */}
+                                    <div style={{ display: 'flex', justifyContent: 'center', height: '25px' }}>
+                                        <div className="connector" style={{ height: '100%' }}></div>
+                                    </div>
+
+                                    {/* Leo AI */}
+                                    <div className="arch-box" style={{ border: '3px solid var(--on-primary-container)' }}>
+                                        <div className="arch-title">🤖 LEO AI (RAG)</div>
+                                        <div className="arch-subtitle">Gemini 2.0 Flash</div>
+                                        <div style={{ fontSize: '0.9rem', opacity: 0.8, marginTop: '0.5rem' }}>
+                                            Knowledge Base • Natural Chat
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </Slide>
 
@@ -692,42 +961,40 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 10: Competitive Comparison */}
+                    {/* SLIDE 10: Our Advantages */}
                     <Slide>
-                        <h2>🏆 Why We Win</h2>
+                        <h2>🏆 What Makes Us Different</h2>
                         <table className="table full-width">
                             <thead>
                                 <tr>
                                     <th>Feature</th>
-                                    <th>WhatsApp/FB</th>
                                     <th>LeoConnect</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>Focus</strong></td>
-                                    <td>General</td>
-                                    <td><strong>Leo MD 306 Specific</strong></td>
+                                    <td><strong>Android App Size</strong></td>
+                                    <td><strong>~6MB only!</strong> (Ultra lightweight)</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Platform</strong></td>
-                                    <td>Web/Mobile</td>
-                                    <td><strong>Mobile + Desktop</strong></td>
+                                    <td><strong>Platforms</strong></td>
+                                    <td><strong>Android + iOS + Desktop + Web</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AI Model</strong></td>
+                                    <td><strong>Gemini 2.0 Flash + RAG</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Admin Dashboard</strong></td>
+                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span> Vue.js + Vite</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Backend</strong></td>
-                                    <td>Legacy</td>
-                                    <td><strong>Cloudflare Edge</strong></td>
+                                    <td><strong>Cloudflare Edge</strong> (&lt;50ms)</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>AI Assistant</strong></td>
-                                    <td><span style={{ color: '#BA1A1A', fontSize: '1.5rem' }}>✕</span></td>
-                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Verified Accounts</strong></td>
-                                    <td><span style={{ color: '#BA1A1A', fontSize: '1.5rem' }}>✕</span></td>
-                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span> 30+</td>
+                                    <td><strong>Verified Officials</strong></td>
+                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span> 30+ seeded</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -788,38 +1055,37 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 12: Future Roadmap */}
+                    {/* SLIDE 12: What We've Built */}
                     <Slide>
-                        <h2>🚀 Roadmap</h2>
-                        <div className="stats-grid">
-                            <div className="stat-card">
-                                <div className="stat-label"><strong>✅ Now (Complete)</strong></div>
-                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left', fontSize: '1rem' }}>
-                                    <li>Social feed & engagement</li>
-                                    <li>Events + RSVP</li>
-                                    <li>Leo AI assistant</li>
-                                    <li>Desktop support</li>
-                                    <li>Verified accounts</li>
+                        <h2>🚀 What We've Built</h2>
+                        <div className="content-grid">
+                            <div className="content-box">
+                                <h3>✅ Core Features</h3>
+                                <ul className="feature-list" style={{ fontSize: '1.1rem' }}>
+                                    <li>Feed + Explore tabs with posts</li>
+                                    <li>Events + RSVP system</li>
+                                    <li>Leo AI (Gemini 2.0 + RAG)</li>
+                                    <li>Club & District discovery</li>
+                                    <li>User profiles & following</li>
+                                    <li>Real-time messaging</li>
+                                    <li>Notifications system</li>
                                 </ul>
                             </div>
-                            <div className="stat-card">
-                                <div className="stat-label"><strong>🟡 Quick Polish</strong></div>
-                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left', fontSize: '1rem' }}>
-                                    <li>Rate limiting</li>
-                                    <li>Double-tap like</li>
+                            <div className="content-box">
+                                <h3>✅ Technical Excellence</h3>
+                                <ul className="feature-list" style={{ fontSize: '1.1rem' }}>
+                                    <li>4 platforms (Android, iOS, Desktop, Web)</li>
+                                    <li>Admin Dashboard (Vue.js)</li>
+                                    <li>Verified officials (30+)</li>
+                                    <li>Search (posts, clubs, districts)</li>
+                                    <li>Double-tap to like</li>
                                     <li>Haptic feedback</li>
-                                    <li>Empty state illustrations</li>
+                                    <li>Rate limiting & security</li>
                                 </ul>
                             </div>
-                            <div className="stat-card">
-                                <div className="stat-label"><strong>🔮 Future</strong></div>
-                                <ul className="feature-list" style={{ marginTop: '1rem', textAlign: 'left', fontSize: '1rem' }}>
-                                    <li>Service hours tracking</li>
-                                    <li>Achievement badges</li>
-                                    <li>Offline mode</li>
-                                    <li>iOS App Store</li>
-                                </ul>
-                            </div>
+                        </div>
+                        <div className="highlight-box" style={{ marginTop: '2rem', maxWidth: '800px' }}>
+                            Ready for production deployment across Leo MD 306! 🦁
                         </div>
                     </Slide>
 
@@ -834,11 +1100,11 @@
                         <div className="stats-grid" style={{ marginTop: '2rem' }}>
                             <div className="stat-card">
                                 <div className="stat-label">Contact</div>
-                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>team@rexosphere.dev</div>
+                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>hello@rexosphere.com</div>
                             </div>
                             <div className="stat-card">
                                 <div className="stat-label">GitHub</div>
-                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>github.com/rexosphere</div>
+                                <div style={{ fontSize: '1.2rem', marginTop: '1rem' }}>github.com/Rexosphere</div>
                             </div>
                             <div className="stat-card">
                                 <div className="stat-label">Questions?</div>
