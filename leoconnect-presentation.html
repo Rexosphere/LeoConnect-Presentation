@@ -782,14 +782,14 @@
                     {/* SLIDE 6: Technical Architecture */}
                     <Slide>
                         <h2>🏗️ Technical Architecture</h2>
-                        <div style={{ width: '100%', maxWidth: '1000px' }}>
+                        <div style={{ width: '100%', maxWidth: '1100px' }}>
                             {/* Client Apps Box */}
-                            <div className="arch-box" style={{ marginBottom: '1.5rem', border: '3px solid var(--primary)' }}>
-                                <div className="arch-title" style={{ fontSize: '1.4rem' }}>📱 CLIENT APPS</div>
+                            <div className="arch-box" style={{ marginBottom: '1rem', border: '3px solid var(--primary)' }}>
+                                <div className="arch-title" style={{ fontSize: '1.3rem' }}>📱 CLIENT APPS</div>
                                 <div className="arch-subtitle">Kotlin Multiplatform + Jetpack Compose</div>
-                                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.6rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
                                     <div className="badge" style={{ position: 'relative' }}>
-                                        Android <span style={{ fontSize: '0.7rem', marginLeft: '0.3rem', background: '#05C167', padding: '2px 6px', borderRadius: '10px' }}>~6MB</span>
+                                        Android <span style={{ fontSize: '0.65rem', marginLeft: '0.2rem', background: '#05C167', padding: '2px 5px', borderRadius: '8px' }}>~6MB</span>
                                     </div>
                                     <div className="badge">iOS</div>
                                     <div className="badge">Desktop</div>
@@ -797,61 +797,59 @@
                                 </div>
                             </div>
 
-                            {/* Split Connector - goes to both Admin and Backend */}
-                            <div style={{ display: 'flex', justifyContent: 'center', position: 'relative', height: '50px' }}>
-                                {/* Vertical down */}
-                                <div className="connector" style={{ height: '25px', position: 'absolute', top: 0 }}></div>
-                                {/* Horizontal bar */}
-                                <div style={{ width: '40%', height: '4px', background: 'var(--gradient-1)', position: 'absolute', top: '25px', borderRadius: '2px' }}></div>
-                                {/* Left leg */}
-                                <div className="connector" style={{ height: '25px', position: 'absolute', top: '25px', left: '30%' }}></div>
-                                {/* Right leg */}
-                                <div className="connector" style={{ height: '25px', position: 'absolute', top: '25px', right: '30%' }}></div>
+                            {/* Simple connector */}
+                            <div style={{ display: 'flex', justifyContent: 'center', height: '30px' }}>
+                                <div className="connector" style={{ height: '100%' }}></div>
                             </div>
 
-                            {/* Middle Row - Admin + Backend with Leo AI */}
-                            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            {/* 3-Column Layout: Admin | Backend | Leo AI */}
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
                                 {/* Admin Dashboard */}
-                                <div className="arch-box" style={{
-                                    flex: '1',
-                                    minWidth: '280px',
-                                    maxWidth: '380px',
-                                    border: '3px solid var(--tertiary)'
-                                }}>
-                                    <div className="arch-title">🖥️ ADMIN DASHBOARD</div>
+                                <div className="arch-box" style={{ border: '3px solid var(--tertiary)' }}>
+                                    <div className="arch-title">🖥️ ADMIN</div>
                                     <div className="arch-subtitle">Vue.js + Vite</div>
-                                    <div style={{ fontSize: '0.95rem', lineHeight: '1.8', marginTop: '1rem' }}>
-                                        <div>✦ User Management</div>
-                                        <div>✦ Club Management</div>
-                                        <div>✦ Analytics Dashboard</div>
+                                    <div style={{ fontSize: '0.85rem', marginTop: '0.5rem', lineHeight: '1.6' }}>
+                                        <div>✦ User Mgmt</div>
+                                        <div>✦ Club Mgmt</div>
+                                        <div>✦ Analytics</div>
                                     </div>
                                 </div>
 
-                                {/* Backend + Leo AI Column */}
-                                <div style={{ flex: '1', minWidth: '280px', maxWidth: '380px' }}>
-                                    {/* Backend */}
-                                    <div className="arch-box" style={{ border: '3px solid var(--secondary)' }}>
-                                        <div className="arch-title">⚡ BACKEND</div>
-                                        <div className="arch-subtitle">Cloudflare Workers (Edge)</div>
-                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '0.75rem' }}>
-                                            <div className="badge" style={{ background: 'var(--secondary)' }}>D1 SQL</div>
-                                            <div className="badge" style={{ background: 'var(--secondary)' }}>R2 CDN</div>
-                                        </div>
+                                {/* Backend */}
+                                <div className="arch-box" style={{ border: '3px solid var(--secondary)' }}>
+                                    <div className="arch-title">⚡ BACKEND</div>
+                                    <div className="arch-subtitle">Cloudflare Edge</div>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.4rem', marginTop: '0.5rem' }}>
+                                        <div className="badge" style={{ background: 'var(--secondary)', fontSize: '0.8rem', padding: '0.4rem 0.8rem' }}>D1 SQL</div>
+                                        <div className="badge" style={{ background: 'var(--secondary)', fontSize: '0.8rem', padding: '0.4rem 0.8rem' }}>R2 CDN</div>
                                     </div>
+                                </div>
 
-                                    {/* Connector */}
-                                    <div style={{ display: 'flex', justifyContent: 'center', height: '25px' }}>
-                                        <div className="connector" style={{ height: '100%' }}></div>
+                                {/* Leo AI */}
+                                <div className="arch-box" style={{ border: '3px solid var(--on-primary-container)' }}>
+                                    <div className="arch-title">🤖 LEO AI</div>
+                                    <div className="arch-subtitle">Gemini 2.0 + RAG</div>
+                                    <div style={{ fontSize: '0.85rem', marginTop: '0.5rem', lineHeight: '1.6' }}>
+                                        <div>✦ Knowledge Base</div>
+                                        <div>✦ Natural Chat</div>
+                                        <div>✦ Context-Aware</div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    {/* Leo AI */}
-                                    <div className="arch-box" style={{ border: '3px solid var(--on-primary-container)' }}>
-                                        <div className="arch-title">🤖 LEO AI (RAG)</div>
-                                        <div className="arch-subtitle">Gemini 2.0 Flash</div>
-                                        <div style={{ fontSize: '0.9rem', opacity: 0.8, marginTop: '0.5rem' }}>
-                                            Knowledge Base • Natural Chat
-                                        </div>
-                                    </div>
+                            {/* Stats Bar at Bottom */}
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+                                <div className="badge badge-green" style={{ fontSize: '1rem', padding: '0.8rem 1.5rem' }}>
+                                    ⚡ &lt;50ms Latency
+                                </div>
+                                <div className="badge badge-blue" style={{ fontSize: '1rem', padding: '0.8rem 1.5rem' }}>
+                                    🌍 300+ CDN Cities
+                                </div>
+                                <div className="badge" style={{ fontSize: '1rem', padding: '0.8rem 1.5rem' }}>
+                                    📦 1 Codebase
+                                </div>
+                                <div className="badge" style={{ fontSize: '1rem', padding: '0.8rem 1.5rem' }}>
+                                    📱 4 Platforms
                                 </div>
                             </div>
                         </div>
