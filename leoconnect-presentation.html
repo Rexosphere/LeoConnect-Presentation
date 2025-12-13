@@ -797,9 +797,89 @@
                                 </div>
                             </div>
 
-                            {/* Simple connector */}
-                            <div style={{ display: 'flex', justifyContent: 'center', height: '30px' }}>
-                                <div className="connector" style={{ height: '100%' }}></div>
+                            {/* Split Connector with Arrows - T-shape going to all 3 boxes */}
+                            <div style={{ position: 'relative', height: '50px', marginBottom: '0.5rem' }}>
+                                {/* Vertical line down from Client Apps */}
+                                <div style={{
+                                    position: 'absolute',
+                                    left: '50%',
+                                    top: 0,
+                                    width: '4px',
+                                    height: '25px',
+                                    background: 'linear-gradient(180deg, var(--primary), var(--secondary))',
+                                    borderRadius: '2px'
+                                }}></div>
+                                {/* Horizontal bar */}
+                                <div style={{
+                                    position: 'absolute',
+                                    left: '10%',
+                                    right: '10%',
+                                    top: '25px',
+                                    height: '4px',
+                                    background: 'linear-gradient(90deg, var(--tertiary), var(--secondary), var(--on-primary-container))',
+                                    borderRadius: '2px'
+                                }}></div>
+                                {/* Left arrow (to Admin) */}
+                                <div style={{
+                                    position: 'absolute',
+                                    left: '16.66%',
+                                    top: '25px',
+                                    width: '4px',
+                                    height: '25px',
+                                    background: 'var(--tertiary)',
+                                    borderRadius: '2px'
+                                }}></div>
+                                <div style={{
+                                    position: 'absolute',
+                                    left: 'calc(16.66% - 6px)',
+                                    top: '44px',
+                                    width: 0,
+                                    height: 0,
+                                    borderLeft: '8px solid transparent',
+                                    borderRight: '8px solid transparent',
+                                    borderTop: '10px solid var(--tertiary)'
+                                }}></div>
+                                {/* Middle arrow (to Backend) */}
+                                <div style={{
+                                    position: 'absolute',
+                                    left: '50%',
+                                    top: '25px',
+                                    width: '4px',
+                                    height: '25px',
+                                    background: 'var(--secondary)',
+                                    borderRadius: '2px',
+                                    marginLeft: '-2px'
+                                }}></div>
+                                <div style={{
+                                    position: 'absolute',
+                                    left: 'calc(50% - 6px)',
+                                    top: '44px',
+                                    width: 0,
+                                    height: 0,
+                                    borderLeft: '8px solid transparent',
+                                    borderRight: '8px solid transparent',
+                                    borderTop: '10px solid var(--secondary)'
+                                }}></div>
+                                {/* Right arrow (to Leo AI) */}
+                                <div style={{
+                                    position: 'absolute',
+                                    right: '16.66%',
+                                    top: '25px',
+                                    width: '4px',
+                                    height: '25px',
+                                    background: 'var(--on-primary-container)',
+                                    borderRadius: '2px'
+                                }}></div>
+                                <div style={{
+                                    position: 'absolute',
+                                    right: 'calc(16.66% - 6px)',
+                                    top: '44px',
+                                    width: 0,
+                                    height: 0,
+                                    borderLeft: '8px solid transparent',
+                                    borderRight: '8px solid transparent',
+                                    borderTop: '10px solid var(--on-primary-container)'
+                                }}></div>
                             </div>
 
                             {/* 3-Column Layout: Admin | Backend | Leo AI */}
