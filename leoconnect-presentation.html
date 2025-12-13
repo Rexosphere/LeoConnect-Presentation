@@ -764,61 +764,7 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 5: VIDEO DEMO */}
-                    <Slide>
-                        <h2>🎬 Live Demo</h2>
-                        <div style={{ width: '100%', maxWidth: '1200px', position: 'relative' }}>
-                            <video
-                                id="demoVideo"
-                                controls
-                                style={{
-                                    width: '100%',
-                                    borderRadius: '16px',
-                                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-                                    border: '3px solid var(--primary)'
-                                }}
-                            >
-                                <source src="leoconnect.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            <button
-                                onClick={() => {
-                                    const video = document.getElementById('demoVideo');
-                                    if (video.requestFullscreen) {
-                                        video.requestFullscreen();
-                                    } else if (video.webkitRequestFullscreen) {
-                                        video.webkitRequestFullscreen();
-                                    } else if (video.msRequestFullscreen) {
-                                        video.msRequestFullscreen();
-                                    }
-                                }}
-                                style={{
-                                    position: 'absolute',
-                                    top: '1rem',
-                                    right: '1rem',
-                                    background: 'var(--primary)',
-                                    color: 'white',
-                                    border: 'none',
-                                    padding: '0.8rem 1.5rem',
-                                    borderRadius: '12px',
-                                    fontSize: '1rem',
-                                    fontWeight: '600',
-                                    cursor: 'pointer',
-                                    boxShadow: '0 4px 15px rgba(140, 78, 41, 0.4)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem'
-                                }}
-                            >
-                                ⛶ Fullscreen
-                            </button>
-                        </div>
-                        <div style={{ marginTop: '1rem', fontSize: '1rem', opacity: 0.7 }}>
-                            Cross-Platform • Feed • Events • Leo AI • Admin Dashboard • Messaging
-                        </div>
-                    </Slide>
-
-                    {/* SLIDE 6: Technical Architecture */}
+                    {/* SLIDE 5: Technical Architecture */}
                     <Slide>
                         <h2>🏗️ Technical Architecture</h2>
                         <div style={{ width: '100%', maxWidth: '1000px' }}>
@@ -904,6 +850,60 @@
                                     📱 4 Platforms
                                 </div>
                             </div>
+                        </div>
+                    </Slide>
+
+                    {/* SLIDE 6: VIDEO DEMO */}
+                    <Slide>
+                        <h2>🎬 Live Demo</h2>
+                        <div style={{ width: '100%', maxWidth: '1200px', position: 'relative' }}>
+                            <video
+                                id="demoVideo"
+                                controls
+                                style={{
+                                    width: '100%',
+                                    borderRadius: '16px',
+                                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                                    border: '3px solid var(--primary)'
+                                }}
+                            >
+                                <source src="leoconnect.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                            <button
+                                onClick={() => {
+                                    const video = document.getElementById('demoVideo');
+                                    if (video.requestFullscreen) {
+                                        video.requestFullscreen();
+                                    } else if (video.webkitRequestFullscreen) {
+                                        video.webkitRequestFullscreen();
+                                    } else if (video.msRequestFullscreen) {
+                                        video.msRequestFullscreen();
+                                    }
+                                }}
+                                style={{
+                                    position: 'absolute',
+                                    top: '1rem',
+                                    right: '1rem',
+                                    background: 'var(--primary)',
+                                    color: 'white',
+                                    border: 'none',
+                                    padding: '0.8rem 1.5rem',
+                                    borderRadius: '12px',
+                                    fontSize: '1rem',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                    boxShadow: '0 4px 15px rgba(140, 78, 41, 0.4)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem'
+                                }}
+                            >
+                                ⛶ Fullscreen
+                            </button>
+                        </div>
+                        <div style={{ marginTop: '1rem', fontSize: '1rem', opacity: 0.7 }}>
+                            Cross-Platform • Feed • Events • Leo AI • Admin Dashboard • Messaging
                         </div>
                     </Slide>
 
@@ -1026,46 +1026,7 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 10: Our Advantages */}
-                    <Slide>
-                        <h2>🏆 What Makes Us Different</h2>
-                        <table className="table full-width">
-                            <thead>
-                                <tr>
-                                    <th>Feature</th>
-                                    <th>LeoConnect</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Android App Size</strong></td>
-                                    <td><strong>~6MB only!</strong> (Ultra lightweight)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Platforms</strong></td>
-                                    <td><strong>Android + iOS + Desktop + Web</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>AI Model</strong></td>
-                                    <td><strong>Gemini 2.0 Flash + RAG</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Admin Dashboard</strong></td>
-                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span> Vue.js + Vite</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Backend</strong></td>
-                                    <td><strong>Cloudflare Edge</strong> (&lt;50ms)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Verified Officials</strong></td>
-                                    <td><span style={{ color: '#05C167', fontSize: '1.5rem' }}>✔</span> 30+ seeded</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </Slide>
-
-                    {/* SLIDE 11: Judging Criteria */}
+                    {/* SLIDE 10: Judging Criteria */}
                     <Slide>
                         <h2>✅ Judging Criteria Match</h2>
                         <table className="table full-width">
@@ -1120,7 +1081,7 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 12: What We've Built */}
+                    {/* SLIDE 11: What We've Built */}
                     <Slide>
                         <h2>🚀 What We've Built</h2>
                         <div className="content-grid">
@@ -1155,7 +1116,7 @@
                         </div>
                     </Slide>
 
-                    {/* SLIDE 13: Thank You */}
+                    {/* SLIDE 12: Thank You */}
                     <Slide>
                         <h1>Thank You!</h1>
                         <div className="subtitle">Team Rexosphere</div>
